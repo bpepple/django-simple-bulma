@@ -131,11 +131,10 @@ class SimpleBulmaFinder(BaseFinder):
         js_files = []
         js_folder = self.simple_bulma_path / "js"
 
-        if self.extensions == "_all":
-            for filename in js_folder.iterdir():
+        for filename in js_folder.iterdir():
+            if self.extensions == "_all":
                 js_files.append(f"js/{filename.name}")
-        else:
-            for filename in js_folder.iterdir():
+            else:
                 extension_name = str(filename.stem)
 
                 if extension_name in self.extensions:
